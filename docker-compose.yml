@@ -1,0 +1,23 @@
+services:
+    nginx:
+        image: nginx:alpine
+        container_name: nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/html
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
+
+    redis:
+        image: redis:alpine
+        restart: always
+        ports:
+            - "6379:6379"
+
+    app:
+        build:
+            context: .
+        container_name: app
+        volumes:
+            - ./:/var/www/html
+            - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
