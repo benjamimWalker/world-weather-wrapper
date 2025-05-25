@@ -1,6 +1,5 @@
 <?php
 
-use App\Actions\GetWeather;
 use App\Contracts\WeatherServiceInterface;
 use App\Exceptions\WeatherApiException;
 use Illuminate\Support\Facades\Cache;
