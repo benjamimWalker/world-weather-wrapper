@@ -13,7 +13,7 @@ beforeEach(function () {
 
 it('returns weather data for a valid city', function () {
     Http::fake([
-        '*' => Http::response(['temp' => 22, 'condition' => 'Sunny'], 200),
+        '*' => Http::response(['temp' => 22, 'condition' => 'Sunny']),
     ]);
 
     $this->getJson(weatherEndpoint . '/London')
@@ -54,7 +54,11 @@ it('handles failed external weather API response', function () {
 });
 
 it('throttles requests after limit is exceeded', function () {
-    for ($i = 0; $i < 8; $i++) {
+    Http::fake([
+        '*' => Http::response(['temp' => 22, 'condition' => 'Sunny']),
+    ]);
+
+    for ($i = 0; $i < 11; $i++) {
         $response = $this->getJson(weatherEndpoint . '/Berlin');
     }
 
