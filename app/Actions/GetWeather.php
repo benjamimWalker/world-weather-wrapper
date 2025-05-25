@@ -13,6 +13,6 @@ class GetWeather
 
     public function handle(string $city): array
     {
-        return $this->weatherService->getCurrentWeather($city);
+        return cache()->flexible($city, [30, 60], fn () => $this->weatherService->getCurrentWeather($city));
     }
 }
