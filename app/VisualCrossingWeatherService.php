@@ -16,8 +16,7 @@ class VisualCrossingWeatherService implements WeatherServiceInterface
      */
     public function getCurrentWeather(string $city): array
     {
-        $response = Http::retry(3, 100)
-            ->timeout(4)
+        $response = Http::timeout(2)
             ->get(config('weather.base_url') . $city);
 
         if ($response->failed()) {
