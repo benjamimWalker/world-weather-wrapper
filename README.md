@@ -64,7 +64,7 @@ http://localhost/docs/api
 
 ## How to use
 
-### 1 - Create a note
+### 1 - Make the request
 
 Send a GET request to /api/weather with the location name
 
